@@ -2,7 +2,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
     body {
-        background-image: linear-gradient(to top, #49a09d, #5f2c82);
+        background-image: linear-gradient(to top, #1E8F8C, #901E78);
     }
 
     section#login {
@@ -12,13 +12,14 @@
 
     section#login > div#imagem {
         float: left;
-        width: 30%;
+        width: 45%;
         height: 100%;
+        background: white url(../imagens/logo-flux-M.png) no-repeat;
     }
 
     section#login > div#formulario {
         float: right;
-        width: 70%;
+        width: 55%;
     }
 
     div#formulario > h1 {
@@ -28,34 +29,49 @@
     div#formulario > p {
         font-size: 1em;
     }
+
+    .botao-esqueci, .botao-cadastrar {
+        width: 47.8%;
+    }
 }
 
 @media screen and (min-width:992px) {
     body {
-        background-image: linear-gradient(to top, #49a09d, #5f2c82);
+        background-image: linear-gradient(to top, #1E8F8C, #901E78);
     }
 
     section#login {
-        width: 950px;
-        height: 400px;
+        width: 750px;
+        height: 375px;
     }
 
     section#login > div#imagem {
         float: right;
         width: 50%;
         height: 100%;
+        background: white url(../imagens/logo-flux-G.png) no-repeat;
     }
+
     section#login > div#formulario {
         float: left;
         width: 50%;
+        height: 100%;
     }
 
     div#formulario > h1 {
         font-size: 1.8em;
+        margin: 25px;
     }
 
-    div#formulario > p {
-        font-size: 1em;
-        margin: 20px 0px;
+    .botao-esqueci, .botao-cadastrar {
+        width: 48%;
+        padding-top: 7px;
+        margin-top:20px;
+    
+        background-color: #1E8F8C;
+        color: white;
+        border-radius: 5px;
+    
+        float: left;
     }
 }
