@@ -9,23 +9,25 @@
     include('config.php');
 
     $usuario = $_POST["usuario"];
-    $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+    $senha = $_POST["senha"];
 
     $sql = "SELECT * FROM usuarios
             WHERE usuario = '{$usuario}'
             AND senha = '{$senha}'";
 
-    $res = $conn->query($sql) or die($conn->error);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $usuario, $senha);
+    $stmt->execute();
 
-    $row = $res->fetch_object();
+    $result = $stmt->get_result();
 
-    $qtd = $res->num_rows;
+    if ($result->num_rows === 1) {
+        $row - $result->fetch_assoc();
 
-    if ($qtd > 0) {
-        $_SESSION["usuario"] = $usuario;
-        $_SESSION["nome"] = $row->nome;
-        $_SESSION["tipo"] = $row->tipo;
+        $_SESSION["loggedin"] = true;
+
         print "<script>location.href='dashboard.php';</script>";
+
     }else{
         print "<script>alert('Usuário e/ou senha incorretos')</script>";
         print "<script>location.href='index.php';</script>";
