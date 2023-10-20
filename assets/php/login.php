@@ -9,7 +9,7 @@
     include('config.php');
 
     $usuario = $_POST["usuario"];
-    $senha = $_POST["senha"];
+    $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
     $sql = "SELECT * FROM usuarios
             WHERE usuario = '{$usuario}'
@@ -27,7 +27,7 @@
         $_SESSION["tipo"] = $row->tipo;
         print "<script>location.href='dashboard.php';</script>";
     }else{
-        print "<script>alert('Usuário e/ou senha')</script>";
+        print "<script>alert('Usuário e/ou senha incorretos')</script>";
         print "<script>location.href='index.php';</script>";
     }
 ?>
