@@ -1,3 +1,36 @@
+<?php
+    session_start();
+
+    require_once "config.php";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $usuario = $_POST['usuario'];
+        $senha = $_POST['senha']; 
+    }
+
+    $sql = "SELECT * FROM usuarios
+            WHERE usuario = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if (password_verify($senha, $row['senha'])) {
+            
+            $_SESSION["loggedin"] = true;
+
+            header("location: dashboard.php");
+            exit;
+        }
+    }else{
+        $error = "Usuário e/ou senha incorretos";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +43,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="assets/estilos/style.css">
+    <link rel="stylesheet" href="../estilos/style.css">
 
     <link rel="stylesheet" href="assets/estilos/media-query.css">
 </head>
@@ -22,10 +55,10 @@
             </div>
             <div id="formulario">
                 <h1>Login</h1>
-                <form action="assets/php/login.php" method="post" autocomplete="on">
+                <form action="index.php" method="post" autocomplete="on">
                     <div class="campo">
                         <i class="material-icons">person</i>
-                        <input type="text" name="login" id="ilogin" placeholder="Seu login" autocomplete="email" required maxlength="30">
+                        <input type="text" name="usuario" id="ilogin" placeholder="Seu login" required>
                         <label for="ilogin">Login</label>
                     </div>
                     <div class="campo">

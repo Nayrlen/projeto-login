@@ -53,12 +53,11 @@
 
 @media screen and (min-width:992px) {
     body {
-        background-image: linear-gradient(to top, #1E8F8C, #901E78);
+        background-image: linear-gradient(to top, var(--cor2), var(--cor4));
     }
 
     #cadastro-clientes {
         width: 75vw;
-
     }
 
     div > h1 {

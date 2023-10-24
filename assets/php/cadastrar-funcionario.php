@@ -36,7 +36,7 @@
             <li>
                 <div class="campo">
                     <label for="isenha">Senha</label>
-                    <input type="text" name="senha" id="isenha" required>
+                    <input type="password" name="senha" id="isenha" required>
                 </div>
             </li>
             <li>
@@ -55,7 +55,7 @@
         <button type="submit">
             Cadastrar
         </button>
-        <a href="../../index.html" class="btn-voltar">Voltar</a>
+        <a href="index.php" class="btn-voltar">Voltar</a>
     </form>
     
 </body>

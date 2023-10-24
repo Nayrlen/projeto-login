@@ -21,7 +21,7 @@
 
         if($stmt->execute()) {
             echo "Usuario criado com sucesso!";
-            print "<script>location.href='dashboard.php';</script>";
+            header("location: cadastrar-funcionario.php");
         }else{
             echo "Erro: " . "<br>" . $coon->error;
         }

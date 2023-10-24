@@ -1,7 +1,22 @@
 <?php
     session_start();
-    if (empty($_SESSION)){
-        print "<script>location.href='../../index.html';</script>";
+    
+    require_once "config.php";
+
+    function logout() {
+
+        session_unset();
+        session_destroy();
+
+        header("Location: index.php");
+        
+        exit;
+    }
+
+    if (!isset($_SESSION["loggedin"])) || $_SESSSION["loggedin"] !== true {
+        
+        header("Location: index.php");
+        exit;
     }
 ?>
 
@@ -32,12 +47,12 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
+                <a href="cadastrar-funcionario.php">
                     <span class="icon">
                         <i class="bi bi-person-add"></i>
                     </span>
                     <span class="txt-link">
-                        Cadastrar Vendedor
+                        Cadastrar Funcionario
                     </span>
                 </a>
             </li>
@@ -63,9 +78,14 @@
             </li>
         </ul>
     </nav>
+    
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"></form>
+    <input type="sumit" name="logout" value="Logout">
+
     <?php
-        print "Olá, " . $_SESSION["nome"];
-        print "<a href='logout.php'>Sair</a>";
+    if (isset($_POST["logout"])) {
+        logout();
+    }
     ?>
     
 </body>
