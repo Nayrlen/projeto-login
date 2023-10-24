@@ -1,8 +1,20 @@
 @charset "UTF-8";
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+:root{
+    --cor0: #ffffff;
+    --cor1: #B5FFFD;
+    --cor2: #1E8F8C;
+    --cor3: #C27AA2;
+    --cor4: #901E78;
+    --cor5: #3A1F34;
+    --cor6: #8F7B1E;
+
+    --fonte-padrão: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1200px) {
     body {
-        background-image: linear-gradient(to top, #1E8F8C, #901E78);
+        background-image: linear-gradient(to top, var(--cor2), var(--cor4));
     }
 
     section#login {
@@ -14,7 +26,7 @@
         float: left;
         width: 45%;
         height: 100%;
-        background: white url(../imagens/logo-flux-M.png) no-repeat;
+        background: var(--cor0) url(../imagens/logo-flux-M.png) no-repeat;
     }
 
     section#login > div#formulario {
@@ -29,15 +41,11 @@
     div#formulario > p {
         font-size: 1em;
     }
-
-    .botao-esqueci, .botao-cadastrar {
-        width: 47.8%;
-    }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width:1200px) {
     body {
-        background-image: linear-gradient(to top, #1E8F8C, #901E78);
+        background-image: linear-gradient(to top, var(--cor2), var(--cor4));
     }
 
     section#login {
@@ -49,7 +57,7 @@
         float: right;
         width: 50%;
         height: 100%;
-        background: white url(../imagens/logo-flux-G.png) no-repeat;
+        background: var(--cor0) url(../imagens/logo-flux-G.png) no-repeat;
     }
 
     section#login > div#formulario {
@@ -61,17 +69,5 @@
     div#formulario > h1 {
         font-size: 1.8em;
         margin: 25px;
-    }
-
-    .botao-esqueci, .botao-cadastrar {
-        width: 48%;
-        padding-top: 7px;
-        margin-top:20px;
-    
-        background-color: #1E8F8C;
-        color: white;
-        border-radius: 5px;
-    
-        float: left;
     }
 }

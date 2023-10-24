@@ -32,7 +32,7 @@ body, html {
     left: 50%;
 
     background-color: var(--cor0);
-    width: 275px;
+    width: 270px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.300);
 
@@ -46,8 +46,14 @@ body, html {
 
 div > h1 {
     text-align: center;
-    font-size: 1.6rem;
-    padding: 5px;
+    font-size: 2rem;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+ul > li{
+    list-style-type: none;
 }
 
 div.campo {
@@ -56,6 +62,7 @@ div.campo {
     color: var(--cor5);
     display: block;
     border-radius: 6px;
+    
     margin: 10px 0px;
 }
 
@@ -78,23 +85,25 @@ legend {
 }
 
 input {
-    font-size: .9rem;
+    font-size: .7rem;
     border: 0px;
     border-radius: 8px;
-    padding: 4px;
+    padding: 1px;
 }
 
 button[type=submit], .btn-voltar{
     display: block;
     font-size: 1em;
-    width: 50%;
+    width: 49%;
     height: 40px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: auto;
+    margin-top: 10px;
     text-align: center;
+    float: left;
 }
 
 button[type=submit] {
@@ -106,6 +115,8 @@ button[type=submit] {
     text-decoration: none;
     background-color: var(--cor2);
     line-height: 40px;
+    margin-left: 5px;
+    
 }
 
 button[type=submit]:hover {
