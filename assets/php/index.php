@@ -2,16 +2,17 @@
     session_start();
 
     require_once "config.php";
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $_POST['usuario'];
+        $email = $_POST['email'];
         $senha = $_POST['senha']; 
     }
 
-    $sql = "SELECT * FROM usuarios
-            WHERE usuario = ?";
+    $sql = "SELECT * FROM usuarios WHERE usuario = ? AND email = ?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $usuario);
+    $stmt ->bind_param("ss", $usuario, $email);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -23,12 +24,13 @@
             
             $_SESSION["loggedin"] = true;
 
-            header("location: dashboard.php");
+            header("Location: dashboard.php");
             exit;
+        } else{
+            $error = "Usuário e/ou senha incorretos";
         }
-    }else{
-        $error = "Usuário e/ou senha incorretos";
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -55,11 +57,16 @@
             </div>
             <div id="formulario">
                 <h1>Login</h1>
-                <form action="index.php" method="post" autocomplete="on">
+                <form method="post" action="index.php" autocomplete="on">
                     <div class="campo">
                         <i class="material-icons">person</i>
-                        <input type="text" name="usuario" id="ilogin" placeholder="Seu login" required>
+                        <input type="text" name="usuario" id="ilogin" placeholder="Usuário" required>
                         <label for="ilogin">Login</label>
+                    </div>
+                    <div class="campo">
+                        <i class="bi bi-envelope-at-fill"></i>
+                        <input type="email" name="email" id="iemail" placeholder="E-mail">
+                        <label for="iemail">E-mail</label>
                     </div>
                     <div class="campo">
                         <i class="material-icons">vpn_key</i>
@@ -77,6 +84,6 @@
             </div>
         </section>
     </main>
-    <script src="assets/js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

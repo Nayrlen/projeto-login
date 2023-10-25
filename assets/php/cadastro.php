@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     require_once "config.php";
 
@@ -23,7 +22,7 @@
             echo "Usuario criado com sucesso!";
             header("location: cadastrar-funcionario.php");
         }else{
-            echo "Erro: " . "<br>" . $coon->error;
+            echo "Erro: " . $sql . "<br>" . $conn->error;
         }
 
         $stmt->close();
