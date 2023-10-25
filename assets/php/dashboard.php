@@ -18,7 +18,7 @@
         header("Location: index.php");
         exit;
     }
-?>
+?> */
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,7 +80,7 @@
     </nav>
     
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"></form>
-    <input type="sumit" name="logout" value="Logout">
+    <input type="submit" name="logout" value="Logout">
 
     <?php
     if (isset($_POST["logout"])) {
